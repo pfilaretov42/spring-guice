@@ -2,6 +2,7 @@ package com.pfilaretov.di.guice;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import com.pfilaretov.di.entity.Person;
 import com.pfilaretov.di.service.BookService;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
@@ -28,5 +29,18 @@ class GuiceTest {
     void getBookService() {
         BookService bookService = injector.getInstance(BookService.class);
         assertNotNull(bookService);
+    }
+
+    @Test
+    void getPerson() {
+        Person person = injector.getInstance(Person.class);
+        assertNotNull(person);
+    }
+
+    @Test
+    void getOptionalService() {
+        GuiceUserService userService = injector.getInstance(GuiceUserService.class);
+        assertNotNull(userService);
+        assertNull(userService.getOptionalService());
     }
 }

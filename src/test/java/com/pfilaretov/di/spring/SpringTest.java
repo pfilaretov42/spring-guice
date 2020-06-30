@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import com.pfilaretov.di.service.AudioBookService;
 import com.pfilaretov.di.service.BookService;
+import com.pfilaretov.di.service.OptionalService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.NoSuchBeanDefinitionException;
@@ -41,5 +42,12 @@ class SpringTest {
             AudioBookService audioBookService = context.getBean(AudioBookService.class);
             assertNotNull(audioBookService);
         });
+    }
+
+    @Test
+    void getOptionalService() {
+        SpringUserService userService = context.getBean(SpringUserService.class);
+        assertNotNull(userService);
+        assertNull(userService.getOptionalService());
     }
 }
